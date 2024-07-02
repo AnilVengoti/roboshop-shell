@@ -5,7 +5,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m'
 N="\e[0m"
-MONGODB_HOST=mongodb.daws76s0.online
+MONGODB_HOST=mongodb.daws79.cloud
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
@@ -81,7 +81,6 @@ systemctl start catalogue &>> $LOGFILE
 VALIDATE $? "Starting catalouge"
 
 cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
-
 
 VALIDATE $? "copying mongodb repo"
 
