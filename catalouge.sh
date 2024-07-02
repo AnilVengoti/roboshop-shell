@@ -61,7 +61,7 @@ VALIDATE $? "unziping catalogue"
 
 npm install &>> $LOGFILE
 
-VALIDATE $? "Installing depenedencies"
+VALIDATE $? "Installing dependencies"
 
 #use absolute path beacuse catalouge.service exists there  
 cp /home/centos/roboshop-shell/catalouge.service /etc/systemd/system/catalouge.service
@@ -72,7 +72,7 @@ systemctl daemon-reload &>> $LOGFILE
 
 VALIDATE $? "catalouge daemon-reload"
 
-systemctl enable catalouge &>> LOGFILE
+systemctl enable catalouge &>> $LOGFILE
 
 VALIDATE $? "Enable catalouge"
 
@@ -83,12 +83,12 @@ VALIDATE $? "Starting catalouge"
 cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
 
-VALIDATE $? "copying mongo repo"
+VALIDATE $? "copying mongodb repo"
 
-dnf install mongodb-org-shell -y
+dnf install mongodb-org-shell -y &>> $LOGFILE
 
-VALIDATE $? "Installing MOngoDB client"
+VALIDATE $? "Installing MongoDB client"
 
 mongo --host $MONGODB_HOST </app/schema/catalogue.js 
 
-VALIDATE $? "Loading catalouge data into mongo db"
+VALIDATE $? "Loading catalouge data into MongoDB"
